@@ -4,18 +4,10 @@
 	"title": "Nuclear Dynamics",
 	"author": "AzuraHimura",
 	"contact": "https://steamcommunity.com/id/AzuraHimura",
-	"description": "Nuclear Dynamics: realistic nuclear and thermobaric weapons with scalable yields, blast physics, cratering, and extensive configuration options. Includes the former Warheads Continued framework.",
+	"description": "Realistic nuclear and thermobaric weapons for Factorio 2.0: scalable yields, blast/thermal physics, cratering, and deep settings. Rebranded fork of True Nukes Continued; Warheads is built in — disable standalone Warheads / Warheads Continued.",
 	"homepage": "",
 	"factorio_version": "2.0",
 	"dependencies": [
-		"? SchallTankPlatoon",
-		"? bobwarfare",
-		"? space-exploration",
-		"? Krastorio2",
-		"? RampantArsenal",
-		"? aai-vehicles-ironclad",
-		"? lightArtillery",
-		"? lightArtillery-Balanced",
 		"! Warheads_Continued",
 		"! Warheads"
 	]
