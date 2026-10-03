@@ -38,8 +38,9 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       energy_required = 120,
       enabled = false,
       category = "centrifuging",
+      auto_recycle = false,
       ingredients = {
-        {type = "item", name = nuke_materials.boomMaterial, amount = 10},
+        {type = "item", name = nuke_materials.boomMaterial, amount = 10, ignored_by_stats = 9},
         {type = "item", name = nuke_materials.deadMaterial, amount = 1}
       },
       icon = "__Nuclear_Dynamics__/graphics/californium-processing.png",
@@ -48,10 +49,12 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       order = "r[uranium-processing]-da[californium-processing]",
       main_product = "",
       results = {
-        {type = "item", name = nuke_materials.boomMaterial, amount = 9},
+        {type = "item", name = nuke_materials.boomMaterial, amount = 9, ignored_by_stats = 9, ignored_by_productivity = 9},
         {type = "item", name = "californium", amount = 1}
       },
-      allow_decomposition = false
+      allow_decomposition = false,
+      allow_productivity = true,
+      allow_quality = false
     },
     {
       type = "recipe",
@@ -59,9 +62,10 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       energy_required = 20,
       enabled = false,
       category = "centrifuging",
+      auto_recycle = false,
       ingredients = {
-        {type = "item", name = nuke_materials.boomMaterial, amount = 5},
-        {type = "item", name = nuke_materials.reflector, amount = 2}
+        {type = "item", name = nuke_materials.boomMaterial, amount = 5, ignored_by_stats = 4},
+        {type = "item", name = nuke_materials.reflector, amount = 2, ignored_by_stats = 1}
       },
       icons = {
         {icon = "__Nuclear_Dynamics__/graphics/californium-processing.png", icon_size = 64, icon_mipmaps = 4},
@@ -71,13 +75,15 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       order = "r[uranium-processing]-dk[californium-processing]",
       main_product = "",
       results = {
-        {type = "item", name = nuke_materials.boomMaterial, amount = 4},
+        {type = "item", name = nuke_materials.boomMaterial, amount = 4, ignored_by_stats = 4, ignored_by_productivity = 4},
         {type = "item", name = nuke_materials.deadMaterial, amount = 1},
-        {type = "item", name = nuke_materials.reflector, amount = 1},
-        {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6},
+        {type = "item", name = nuke_materials.reflector, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1},
+        {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6, ignored_by_stats = 1, ignored_by_productivity = 1},
         {type = "item", name = "californium", amount = 1}
       },
-      allow_decomposition = false
+      allow_decomposition = false,
+      allow_productivity = true,
+      allow_quality = false
     },
   });
 end
@@ -89,10 +95,11 @@ data:extend{
     energy_required = 10,
     enabled = false,
     category = "centrifuging",
+    auto_recycle = false,
     ingredients = {
-      {type = "item", name = "uranium-235", amount = 20},
-      {type = "item", name = "uranium-238", amount = 5},
-      {type = "item", name = nuke_materials.reflector, amount = 2}
+      {type = "item", name = "uranium-235", amount = 20, ignored_by_stats = 20},
+      {type = "item", name = "uranium-238", amount = 5, ignored_by_stats = 2},
+      {type = "item", name = nuke_materials.reflector, amount = 2, ignored_by_stats = 1}
     },
     icons = {
       {icon = "__base__/graphics/icons/kovarex-enrichment-process.png", icon_size = 64, icon_mipmaps = 4},
@@ -102,12 +109,14 @@ data:extend{
     order = "r[uranium-processing]-cc[kovarex-enrichment-process]",
     main_product = "",
     results = {
-      {type = "item", name = "uranium-235", amount = 21},
-      {type = "item", name = "uranium-238", amount = 2},
-      {type = "item", name = nuke_materials.reflector, amount = 1},
-      {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6}
+      {type = "item", name = "uranium-235", amount = 21, ignored_by_stats = 20, ignored_by_productivity = 20},
+      {type = "item", name = "uranium-238", amount = 2, ignored_by_stats = 2, ignored_by_productivity = 2},
+      {type = "item", name = nuke_materials.reflector, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1},
+      {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6, ignored_by_stats = 1, ignored_by_productivity = 1}
     },
-    allow_decomposition = false
+    allow_decomposition = false,
+    allow_productivity = true,
+    allow_quality = false
   },
   {
     type = "item",

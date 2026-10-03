@@ -24,7 +24,7 @@ end
 
 local function testDetonation(force, warhead)
   local packName = "test-pack" .. warhead.name .. warhead.label
-  --[[if not storage.nuclearTests then
+  if not storage.nuclearTests then
     storage.nuclearTests = {}
   end
   if not storage.nuclearTests[force.index] then
@@ -33,7 +33,7 @@ local function testDetonation(force, warhead)
   if not storage.nuclearTests[force.index][packName] then
     storage.nuclearTests[force.index][packName] = 0
   end
-  storage.nuclearTests[force.index][packName] = storage.nuclearTests[force.index][packName]+1]]
+  storage.nuclearTests[force.index][packName] = storage.nuclearTests[force.index][packName]+1
   reevaluateResearch(force, packName)
 end
 --script.on_event(defines.events.on_research_started, reevaluateResearchFull)

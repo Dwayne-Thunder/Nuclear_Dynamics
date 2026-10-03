@@ -286,8 +286,9 @@ local function atomic_weapon_hit(surface_index, source, position, crater_interna
   end
   -- light fires as nessesary
   if(flame_proportion>0 and crater_system_to_use.use_fires) then
+    local fireOuterR = math.max(0, math.floor(fire_outer_r))
     for _,v in pairs(game.surfaces[surface_index].find_tiles_filtered{position=position, radius=fire_outer_r}) do
-      local rand = math.random(0, fire_outer_r)
+      local rand = math.random(0, fireOuterR)
       if(math.random(0, 1)+flame_proportion/8>1 and rand*rand>(v.position.x-position.x)*(v.position.x-position.x)+(v.position.y-position.y)*(v.position.y-position.y)) then
         if((not(water.waterInCraterGoingOutDepths[v.name] == nil)) and water.waterInCraterGoingOutDepths[v.name] > -10) then
           game.surfaces[surface_index].create_entity{name="thermobaric-wave-fire",position=v.position}
@@ -298,8 +299,10 @@ local function atomic_weapon_hit(surface_index, source, position, crater_interna
     end
   end
   if (settings.global["nuke-random-fires"].value and create_small_fires and crater_system_to_use.use_fires) then
+    local fireOuterR = math.max(0, math.floor(fire_outer_r))
+    local smallFireMaxR = math.max(fireOuterR, math.floor(small_fire_max_r))
     for i=(fire_outer_r*fire_outer_r/10),(small_fire_max_r*small_fire_max_r/10) do
-      local dist = math.random(fire_outer_r, math.random(fire_outer_r, small_fire_max_r))
+      local dist = math.random(fireOuterR, math.random(fireOuterR, smallFireMaxR))
       local angle = math.random()*3.1416*2
       game.surfaces[surface_index].create_entity{name="thermobaric-wave-fire",position={position.x+dist*math.cos(angle), position.y+dist*math.sin(angle)}}
     end
@@ -344,7 +347,10 @@ local function nukeFiredScan(event)
     entity = event.source_entity
   end
   if (entity) then
-    local position = event.target_entity.position
+    local position = find_event_position(event)
+    if not position then
+      return
+    end
     if(string.match(entity.prototype.name, ".*-atomic-2-stage-100kt")) then
       if (not settings.global["optimise-100kt"].value) then
         game.surfaces[event.surface_index].request_to_generate_chunks(position, 1500/32)
@@ -477,10 +483,10 @@ local function clearAllCraters(surface)
 end
 
 local function getGlobal()
-  return global;
+  return storage;
 end
 local function setGlobal(newglobal)
-  global = newglobal;
+  storage = newglobal;
 end
 remote.add_interface("True-Nukes Scripts", {
   thermobaricWeaponHit = thermobaric_weapon_hit,

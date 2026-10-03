@@ -12,6 +12,10 @@ local function nukeBuildingDetonate(building)
       break
     end
   end
+  if not result then
+    building.get_output_inventory().clear()
+    return
+  end
   building.surface.create_entity{name="warhead-util-projectile" .. result, position={building.position.x-1, building.position.y}, target=building, speed=100, max_range=1, force=building.force, source=building}
   building.get_output_inventory().clear();
 end

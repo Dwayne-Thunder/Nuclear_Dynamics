@@ -257,7 +257,7 @@ local function nukeTileChangesHeightAware(position, check_craters, surface_index
     for x,xtiles in pairs(groundNoise) do
       for y,_ in pairs(xtiles) do
         local tile = game.surfaces[surface_index].get_tile(x, y)
-        if(tile ~= "out-of-map")then
+        if(tile.valid and tile.name ~= "out-of-map")then
           local tileDepth = water.waterDepths[tile.name];
           if not(tileDepth == nil) then
             table.insert(tileTable, {name = water.depthsForCrater[tileDepth], position = {x = x, y = y}})

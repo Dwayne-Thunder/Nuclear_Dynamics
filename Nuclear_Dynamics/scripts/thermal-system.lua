@@ -1,4 +1,7 @@
 local function damage_entity(surface, distSq, ePos, fireballSq, initialDamage, v, force, cause, corpseMap, deathStatsForTrees, deathStatsForOther)
+  if not v.destructible then
+    return
+  end
   local damage = fireballSq*initialDamage/distSq
   local eProto = v.prototype
   if(v.type=="spider-leg") then
@@ -8,7 +11,7 @@ local function damage_entity(surface, distSq, ePos, fireballSq, initialDamage, v
     if(math.random(0, 100)<1) then
       surface.create_entity{name="fire-flame-on-tree", target = v, position=ePos}
     end
-    local damage = math.random(damage/8, damage)/2
+    local damage = math.random(math.floor(damage/8), math.max(1, math.floor(damage)))/2
     if((((not eProto.resistances) or not eProto.resistances.fire) and v.health<damage) or
       (eProto.resistances and eProto.resistances.fire and v.health<(damage-eProto.resistances.fire.decrease)*(1-eProto.resistances.fire.percent))) then
       local surface = v.surface
@@ -27,7 +30,7 @@ local function damage_entity(surface, distSq, ePos, fireballSq, initialDamage, v
       end
     end
   else
-    local damage = math.random(damage/2, damage*2)
+    local damage = math.random(math.max(1, math.floor(damage/2)), math.max(1, math.floor(damage*2)))
     if(v.grid) then
       if(cause and cause.valid) then
         v.damage(damage, force, "fire", cause)

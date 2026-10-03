@@ -69,7 +69,7 @@ local function building_detonated(building, warhead)
     elseif (name=="-atomic-500t") then
       for _,f in pairs(game.forces) do
         if(f ~= building.force) then
-          if (storage.nuclearTests[f.index] and storage.nuclearTests[f.index]["test-pack-atomic-500t-1"]) then
+          if (storage.nuclearTests and storage.nuclearTests[f.index] and storage.nuclearTests[f.index]["test-pack-atomic-500t-1"]) then
             table.insert(achievements, "multi-force-500t")
             for _,p in pairs(f.players) do
               p.unlock_achievement("multi-force-500t")

@@ -62,7 +62,7 @@ local function full_fireball(surface_index, position, fireball_r, crater_externa
   local deathStatsForOther = settings.global["retain-death-statistics"].value or (fireball_r < 80 and settings.global["retain-death-statistics-small"].value)
   -- kill things in the fireball
   for _,v in pairs(game.surfaces[surface_index].find_entities_filtered{position=position, radius=fireball_r}) do
-    if(v.valid and (not (string.match(v.type, "ghost"))) and (not (v.type == "resource"))) then
+    if(v.valid and v.destructible and (not (string.match(v.type, "ghost"))) and (not (v.type == "resource"))) then
       if v.type=="tree" and not deathStatsForTrees then
         v.destroy()
       elseif v.type == "character" then
@@ -78,14 +78,10 @@ local function full_fireball(surface_index, position, fireball_r, crater_externa
         v.destroy{raise_destroy = true}
       elseif cause and cause.valid then
         if not v.die(force, cause) then
-          if(v.destructible) then
-            v.destroy{raise_destroy = true}
-          end
-        end
-      elseif not v.die(force) then
-        if(v.destructible) then
           v.destroy{raise_destroy = true}
         end
+      elseif not v.die(force) then
+        v.destroy{raise_destroy = true}
       end
     end
   end
@@ -120,7 +116,7 @@ local function full_fireball(surface_index, position, fireball_r, crater_externa
   end
   -- make sure everything is dead in the fireball
   for _,v in pairs(game.surfaces[surface_index].find_entities_filtered{position=position, radius=fireball_r}) do
-    if(v.valid and (not (string.match(v.type, "ghost"))) and (not (v.type == "resource"))) then
+    if(v.valid and v.destructible and (not (string.match(v.type, "ghost"))) and (not (v.type == "resource"))) then
       if v.type == "character" then
         if(v.force == force and v.player) then
           achievement_system.nukedSelf(v.player);
@@ -132,15 +128,11 @@ local function full_fireball(surface_index, position, fireball_r, crater_externa
         end
       elseif(cause and cause.valid) then
         if not v.die(force, cause) then
-          if(v.destructible) then
-            v.destroy{raise_destroy = true}
-          end
+          v.destroy{raise_destroy = true}
         end
       else
         if not v.die(force) then
-          if(v.destructible) then
-            v.destroy{raise_destroy = true}
-          end
+          v.destroy{raise_destroy = true}
         end
       end
     end
@@ -152,7 +144,7 @@ local function partial_fireball(surface_index, chunkLoaderStruct, chunkPosAndAre
   local entities = game.surfaces[surface_index].find_entities_filtered{area = chunkPosAndArea.area}
   local fireballSq = chunkLoaderStruct.fireball_r*chunkLoaderStruct.fireball_r;
   for _,e in pairs(entities) do
-    if(e.valid and (not (string.match(e.type, "ghost"))) and ((e.type ~= "resource") and (killPlanes or (e.type ~= "car")))
+    if(e.valid and e.destructible and (not (string.match(e.type, "ghost"))) and ((e.type ~= "resource") and (killPlanes or (e.type ~= "car")))
       and --e.position.x>=x and e.position.x<x+32 and e.position.y>=y and e.position.y<y+32 and
       (e.position.x-originPos.x)*(e.position.x-originPos.x) + (e.position.y-originPos.y)*(e.position.y-originPos.y)<=fireballSq) then
 
@@ -171,22 +163,18 @@ local function partial_fireball(surface_index, chunkLoaderStruct, chunkPosAndAre
         e.destroy{raise_destroy = true}
       elseif(cause ~= nil and cause.valid) then
         if not e.die(force, cause) then
-          if(e.destructible) then
-            e.destroy{raise_destroy = true}
-          end
+          e.destroy{raise_destroy = true}
         end
       else
         if not e.die(force) then
-          if(e.destructible) then
-            e.destroy{raise_destroy = true}
-          end
+          e.destroy{raise_destroy = true}
         end
       end
     end
   end
   entities = game.surfaces[surface_index].find_entities_filtered{area = chunkPosAndArea.area}
   for _,e in pairs(entities) do
-    if(e.valid and (not (string.match(e.type, "ghost"))) and ((e.type ~= "resource")) and (killPlanes or e.type ~= "car")
+    if(e.valid and e.destructible and (not (string.match(e.type, "ghost"))) and ((e.type ~= "resource")) and (killPlanes or e.type ~= "car")
       and --e.position.x>=x and e.position.x<x+32 and e.position.y>=y and e.position.y<y+32 and
       (e.position.x-originPos.x)*(e.position.x-originPos.x) + (e.position.y-originPos.y)*(e.position.y-originPos.y)<=fireballSq) then
       if e.type=="tree" then
@@ -204,15 +192,11 @@ local function partial_fireball(surface_index, chunkLoaderStruct, chunkPosAndAre
         e.destroy{raise_destroy = true}
       elseif(cause ~= nil and cause.valid) then
         if not e.die(force, cause) then
-          if(e.destructible) then
-            e.destroy{raise_destroy = true}
-          end
+          e.destroy{raise_destroy = true}
         end
       else
         if not e.die(force) then
-          if(e.destructible) then
-            e.destroy{raise_destroy = true}
-          end
+          e.destroy{raise_destroy = true}
         end
       end
     end

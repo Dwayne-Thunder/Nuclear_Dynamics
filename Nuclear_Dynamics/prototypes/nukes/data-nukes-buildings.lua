@@ -45,8 +45,9 @@ for _,w in pairs(warheads_to_add) do
         },
       }
       if data.raw.tool["test-pack" .. warhead.appendName .. explosion.appendName .. w.label] then
-        table.insert(recipe.results, {type = "item", 1, name = "test-pack" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1})
-        recipe.main_product = "test-pack" .. w.name .. w.label
+        local packName = "test-pack" .. warhead.appendName .. explosion.appendName .. w.label
+        table.insert(recipe.results, {type = "item", name = packName, amount = 1})
+        recipe.main_product = packName
       end
       if(w.fusion) then
         recipe.category = "fusion-detonation"
@@ -158,7 +159,7 @@ data:extend{
     icon = "__Nuclear_Dynamics__/graphics/nuclear-test-building.png",
     icon_size = 64,
     source_inventory_size = 1,
-    result_inventory_size = 1,
+    result_inventory_size = 2,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 10, result = "nuclear-test-site"},
     max_health = 5000,
@@ -282,7 +283,7 @@ data:extend{
     icon = "__Nuclear_Dynamics__/graphics/fusion-test-building.png",
     icon_size = 64, icon_mipmaps = 1,
     source_inventory_size = 1,
-    result_inventory_size = 1,
+    result_inventory_size = 2,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 10, result = "fusion-test-site"},
     max_health = 5000,

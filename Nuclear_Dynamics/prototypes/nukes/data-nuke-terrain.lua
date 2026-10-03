@@ -193,7 +193,7 @@ nuclear_crater.collision_mask =
 nuclear_crater.transition_merges_with_tile = "water"
 nuclear_crater.layer = 9
 nuclear_crater.map_color={r=43, g=35, b=31}
-nuclear_shallow.empty_transitions = false
+nuclear_crater.empty_transitions = false
 nuclear_crater.transition = nuclear_crater_transitions;
 
 data:extend{nuclear_crater}
@@ -279,7 +279,7 @@ nuclear_high.collision_mask =
 nuclear_high.transition_merges_with_tile = "water"
 nuclear_high.layer = 128
 nuclear_high.map_color={r=53, g=43, b=39}
-nuclear_shallow.empty_transitions = false
+nuclear_high.empty_transitions = false
 nuclear_high.transition = nuclear_high_transitions;
 
 data:extend{nuclear_high}

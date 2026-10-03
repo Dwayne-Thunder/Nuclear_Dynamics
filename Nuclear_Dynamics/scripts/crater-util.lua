@@ -33,7 +33,7 @@ local function tileNoise(surface, tableTarget, position, radius, depthMult, tile
     for num=0,sliceCount do
       local slice_w = (math.floor(radius*depthMult/50)+1)
       for ang=0,math.ceil(3.1416*2*radius*slice_w*4/(num*num+1)) do
-        local dist = math.floor(math.random(num*slice_w, slice_w+num*slice_w))
+        local dist = math.random(num*slice_w, slice_w+num*slice_w)
         local offset = math.random()
 
         local noise_pos = {x = math.floor(position.x+(dist+radius-1)*math.sin(ang+offset)+0.5), y = math.floor(position.y+(dist+radius-1)*math.cos(ang+offset)+0.5)}
@@ -75,7 +75,7 @@ local function tileNoiseLimited(surface, tableTarget, position, radius, depthMul
     for num=0,sliceCount do
       if(minR<=slice_w+num*slice_w+radius and maxR>=num*slice_w+radius-1) then
         for ang=0,math.ceil(angleDiff*radius*slice_w*4/(num*num+1)) do
-          local dist = math.floor(math.random(num*slice_w, slice_w+num*slice_w))
+          local dist = math.random(num*slice_w, slice_w+num*slice_w)
           local offset = math.random()+sliceCount
           local angle = (ang+offset)%angleDiff+startAngle
           local noise_pos = {x = math.floor(position.x+(dist+radius-1)*math.cos(angle)+0.5), y = math.floor(position.y+(dist+radius-1)*math.sin(angle)+0.5)}

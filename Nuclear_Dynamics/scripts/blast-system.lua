@@ -1,5 +1,5 @@
 local function fire_damage_entity(surface, entity, force, cause, killPlanes)
-  if (entity.valid and entity.position and (killPlanes or entity.type ~= "car")) then
+  if (entity.valid and entity.destructible and entity.position and (killPlanes or entity.type ~= "car")) then
     if(not (entity.prototype.get_max_health(entity.quality) == 0)) then
       -- For thermobarics, with the blast wave carrying the fire
       local type = entity.type
@@ -49,6 +49,9 @@ end
 
 local function damage_entity(surface, distSq, ePos, power, fire, damage_init, blast_min_damage, entity, force, cause, corpseMap,  deathStatsForTrees, deathStatsForOther)
   -- do blast damage - reduced for rails, belts, land mines and flying vehicles, as this makes some sense, and trees in order to leave some alive
+  if not entity.destructible then
+    return
+  end
   local eProto = entity.prototype
   local damage = power/distSq*damage_init+blast_min_damage
   local t = entity.type
@@ -58,7 +61,7 @@ local function damage_entity(surface, distSq, ePos, power, fire, damage_init, bl
     if(fire) then
       surface.create_entity{name="fire-flame-on-tree", target = entity, position=ePos}
     end
-    damage = math.random(damage/8, damage)/2
+    damage = math.random(math.floor(damage/8), math.max(1, math.floor(damage)))/2
 
     if(eProto.resistances and eProto.resistances.explosion) then
       damage = (damage-entity.prototype.resistances.explosion.decrease)*(1-eProto.resistances.explosion.percent)
@@ -84,9 +87,11 @@ local function damage_entity(surface, distSq, ePos, power, fire, damage_init, bl
     end
     return
   else
-    if(t=="curved-rail") then
+    if(t=="curved-rail" or t=="legacy-curved-rail" or t=="curved-rail-a" or t=="curved-rail-b"
+      or t=="half-diagonal-rail" or t=="elevated-curved-rail-a" or t=="elevated-curved-rail-b"
+      or t=="elevated-half-diagonal-rail" or t=="rail-ramp") then
       damage = damage/10
-    elseif (t=="straight-rail") then
+    elseif (t=="straight-rail" or t=="legacy-straight-rail" or t=="elevated-straight-rail") then
       damage = damage/10
     elseif (t=="transport-belt") then
       damage = damage/10
@@ -97,7 +102,7 @@ local function damage_entity(surface, distSq, ePos, power, fire, damage_init, bl
         damage = damage/2
       end
     end
-    damage = math.random(damage/2, damage*2)
+    damage = math.random(math.max(1, math.floor(damage/2)), math.max(1, math.floor(damage*2)))
     local calcDamage = damage;
     if(eProto.resistances and eProto.resistances.explosion) then
       calcDamage = (calcDamage-eProto.resistances.explosion.decrease)*(1-eProto.resistances.explosion.percent)
@@ -278,14 +283,15 @@ local function move_blast(i,blast,pastEHits, corpseMap)
       local distSq = xdif*xdif + ydif*ydif
       if(distSq > (blast.r - blast.speed)*(blast.r - blast.speed) and distSq <= blast.r*blast.r) then
         if (blast.r <= blast.fire_rad) then
-          local chance = math.random(0, blast.fire_rad)
+          local chance = math.random(0, math.max(0, math.floor(blast.fire_rad)))
           if(chance*chance>distSq) then
             surface.create_entity{name="fire-flame",position=tile.position}
           else
             surface.create_entity{name="thermobaric-wave-fire",position=tile.position}
           end
         else
-          local chanceWave = math.random(blast.fire_rad, blast.max)
+          local fireRad = math.max(0, math.floor(blast.fire_rad))
+          local chanceWave = math.random(fireRad, math.max(fireRad, math.floor(blast.max)))
           if(chanceWave*chanceWave>distSq) then
             surface.create_entity{name="thermobaric-wave-fire",position=tile.position}
           end
