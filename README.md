@@ -1,6 +1,6 @@
 # Nuclear Dynamics
 
-**Version:** 0.1.0 · **Factorio:** 2.0 · **Author:** [AzuraHimura](https://steamcommunity.com/id/AzuraHimura)
+**Version:** 0.1.0 · **Factorio:** 2.0 · **Author:** Brian_Thunderstruck
 
 Realistic nuclear and thermobaric weapons with scalable yields, blast physics, cratering, radiation, and extensive configuration options.
 
@@ -14,7 +14,7 @@ Based on [True Nukes](https://mods.factorio.com/mod/True-Nukes) / [True Nukes Co
 
 Nuclear Dynamics expands Factorio’s atomic arsenal with physically inspired blast effects: thermal flash, blast wave, fireball, crater, lingering radiation, and pollution. Yields range from tiny ammo rounds up to gigaton-class building detonations. Thermobaric (fuel-air) weapons fill an earlier “wide area” niche.
 
-This is a rebranded fork maintained by **AzuraHimura**, for Factorio **2.0**. Upstream lineage: **BicycleEater** (original True Nukes), **Daimonfire** (2.0 Continued port), with thanks to **azrogers** for fixes. Latest known True Nukes Continued release on the portal: **0.3.36**.
+This is a rebranded fork maintained by **Brian_Thunderstruck**, for Factorio **2.0**. Upstream lineage: **BicycleEater** (original True Nukes), **Daimonfire** (2.0 Continued port), with thanks to **azrogers** for fixes. Latest known True Nukes Continued release on the portal: **0.3.36**.
 
 ### Effects
 
@@ -79,7 +79,7 @@ Does not coexist cleanly with other mods that rewrite nuclear weapons. Chunk det
 
 | Role | Credit |
 |------|--------|
-| Current fork (Nuclear Dynamics) | **AzuraHimura** |
+| Current fork (Nuclear Dynamics) | **Brian_Thunderstruck** |
 | True Nukes (original) | **BicycleEater** |
 | True Nukes Continued (2.0) | **Daimonfire** |
 | Fixes | **azrogers** |
@@ -89,7 +89,7 @@ Does not coexist cleanly with other mods that rewrite nuclear weapons. Chunk det
 - Upstream mod portal: [True Nukes Continued](https://mods.factorio.com/mod/True-Nukes_Continued)  
 - Upstream source (Continued): [Daimonfire1/Factorio-True-Nukes_Continued](https://github.com/Daimonfire1/Factorio-True-Nukes_Continued)  
 - This repository: [Dwayne-Thunder/Nuclear_Dynamics](https://github.com/Dwayne-Thunder/Nuclear_Dynamics)  
-- Author contact: [Steam — AzuraHimura](https://steamcommunity.com/id/AzuraHimura)
+- Author: **Brian_Thunderstruck**
 
 ---
 
@@ -99,7 +99,7 @@ Does not coexist cleanly with other mods that rewrite nuclear weapons. Chunk det
 
 **Nuclear Dynamics** — мод для Factorio **2.0** с реалистичными ядерными и термобарическими взрывами: тепловая вспышка, ударная волна, огненный шар, кратер, радиация, загрязнение. Мощности — от магазина патронов до гигатонного здания-детонатора.
 
-Форк и ребренд поддерживает **AzuraHimura**. Основано на **True Nukes** (BicycleEater) и **True Nukes Continued** (порт 2.0 — Daimonfire; правки — azrogers). Фреймворк **Warheads** / Warheads Continued **встроен в мод** — отдельная зависимость не нужна. Последняя известная версия Continued на портале: **0.3.36**. Текущая версия этого мода: **0.1.0**.
+Форк и ребренд поддерживает **Brian_Thunderstruck**. Основано на **True Nukes** (BicycleEater) и **True Nukes Continued** (порт 2.0 — Daimonfire; правки — azrogers). Фреймворк **Warheads** / Warheads Continued **встроен в мод** — отдельная зависимость не нужна. Последняя известная версия Continued на портале: **0.3.36**. Текущая версия этого мода: **0.1.0**.
 
 ### Эффекты
 
@@ -164,7 +164,7 @@ Does not coexist cleanly with other mods that rewrite nuclear weapons. Chunk det
 
 | Роль | Кто |
 |------|-----|
-| Текущий форк (Nuclear Dynamics) | **AzuraHimura** |
+| Текущий форк (Nuclear Dynamics) | **Brian_Thunderstruck** |
 | Оригинал True Nukes | **BicycleEater** |
 | True Nukes Continued (2.0) | **Daimonfire** |
 | Правки | **azrogers** |
@@ -174,4 +174,4 @@ Does not coexist cleanly with other mods that rewrite nuclear weapons. Chunk det
 - Портал оригинального Continued: [True Nukes Continued](https://mods.factorio.com/mod/True-Nukes_Continued)  
 - Исходники Continued: [Daimonfire1/Factorio-True-Nukes_Continued](https://github.com/Daimonfire1/Factorio-True-Nukes_Continued)  
 - Этот репозиторий: [Dwayne-Thunder/Nuclear_Dynamics](https://github.com/Dwayne-Thunder/Nuclear_Dynamics)  
-- Автор: [Steam — AzuraHimura](https://steamcommunity.com/id/AzuraHimura)
+- Автор: **Brian_Thunderstruck**

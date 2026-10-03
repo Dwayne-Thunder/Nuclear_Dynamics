@@ -1,4 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 03.10.2026
+  Features:
+    - Initial Nuclear Dynamics release (Brian_Thunderstruck): rebranded fork of True Nukes Continued for Factorio 2.0
+    - Warheads framework bundled inside the mod (no separate Warheads / Warheads Continued dependency)
+    - Enrichment recipes support quality and productivity like Kovarex
+    - Full Russian locale (plus English)
+  Changes:
+    - Mod internal name is Nuclear_Dynamics (not a drop-in replace for True-Nukes_Continued saves by mod name)
+    - Hard conflict with standalone Warheads and Warheads_Continued — disable those mods
+    - Runtime storage moved to remote storage instead of the global table
+    - Nuclear test sites / test-site recipes cleaned up for 2.0
+    - Crater tile definitions use copy-paste-safe prototype setup
+    - Rail handling updated for Factorio 2.0; safer tile.name and math.random floor usage
+  Bugfixes:
+    - Fixed ammo_type crash with bobwarfare 2.1 (bullet-magazine → bob-bullet-magazine)
+    - Fixed cannon/shotgun ammo category mismatches
+    - Fixed originPos crash with Space Exploration
+    - Added destructible=false guards to avoid invalid entity access
+    - Added nil-guards for nukeFiredScan / nukeBuildingDetonate
+  Locale:
+    - Complete Russian translation; English strings kept/updated
+  Info:
+    - Upstream lineage: True Nukes (BicycleEater) → True Nukes Continued 0.3.36 (Daimonfire); this fork starts at 0.1.0
+---------------------------------------------------------------------------------------------------
 Version: 0.3.36
 Date: 2026-01-17
   Bugfixes:
