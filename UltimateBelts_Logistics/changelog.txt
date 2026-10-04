@@ -1,0 +1,76 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.9
+Date: 04.10.2026
+  Changes:
+    - Loader descriptions list Split lanes / Overfill machines as two separate lines (same wording as GUI checkboxes)
+---------------------------------------------------------------------------------------------------
+Version: 0.1.8
+Date: 04.10.2026
+  Features:
+    - Loader item/entity descriptions mention Split lanes / Overfill machines GUI options (EN + RU)
+  Locale:
+    - Cleaned unused ubsa-dsb-*-inserter strings
+---------------------------------------------------------------------------------------------------
+Version: 0.1.7
+Date: 04.10.2026
+  Changes:
+    - Inserters now start from UBSA ultra-fast only (removed ubsa-dsb-* transport/fast/express/turbo inserters)
+    - DSB yellow→turbo loaders kept; high-speed inserters require Ultimate Belts Space Age
+---------------------------------------------------------------------------------------------------
+Version: 0.1.6
+Date: 04.10.2026
+  Bugfixes:
+    - Fixed load error: LocalisedString parameters for inserter belt speed must be strings (tostring items/s)
+---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+Date: 04.10.2026
+  Features:
+    - Inserter item/entity tooltips show maximum supported belt throughput (items/s), recalculated after Double Speed Belts resync
+  Locale:
+    - EN/RU parameterized strings for max belt speed on ubsa-* inserters
+---------------------------------------------------------------------------------------------------
+Version: 0.1.4
+Date: 04.10.2026
+  Features:
+    - Loader GUI toggles: Split lanes / Overfill machines (entity variants -split / -fill)
+    - State persists via entity variant name; copy-paste settings supported
+  Locale:
+    - EN/RU strings for loader GUI (RU: Разделять полосы, Переполнять механизмы)
+---------------------------------------------------------------------------------------------------
+Version: 0.1.3
+Date: 04.10.2026
+  Bugfixes:
+    - Clamped inserter stack_size_bonus to uint8 (0–255); DSB-boosted linear bonus overflowed (e.g. 262 on ubsa-extreme-express-inserter)
+    - Stack bonus now scales with log2(speed factor) and stays modest; throughput relies on rotation/extension speed
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 04.10.2026
+  Features:
+    - Soft compatibility with Double Speed Belts (DoubleSpeedBelts): loader/inserter speeds resync in data-final-fixes from live belt.speed
+    - When DSB is enabled, also adds ubsa-dsb-* loaders/inserters for transport / fast / express / turbo belts
+    - UltimateBeltsSpaceAge is now optional; require at least one of UBSA or DSB
+    - Both mods can be enabled together (UBSA high tiers + DSB vanilla/SA chain)
+  Locale:
+    - EN/RU strings for DSB transport/fast/express/turbo loaders and inserters
+  Info:
+    - Soft deps: UltimateBeltsSpaceAge, DoubleSpeedBelts
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 04.10.2026
+  Bugfixes:
+    - Removed invalid entity flag fast-replaceable-no-build-while-moving from loaders (Factorio 2.0 load error)
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 04.10.2026
+  Features:
+    - Initial release: loaders and high-speed inserters for Ultimate Belts Space Age
+    - Five loader tiers matched to ultra-fast / extreme-fast / ultra-express / extreme-express / ultimate belts
+    - Five inserter tiers with rotation/extension speeds scaled from bulk-inserter vs 60 items/s turbo baseline
+    - Recipes unlock with the matching Ultimate Belts logistics technologies
+    - English and Russian locales
+    - Belt-snap assist for UBSA loaders on build
+  Info:
+    - Internal mod name: UltimateBelts_Logistics
+    - Hard dependency: UltimateBeltsSpaceAge >= 1.3.0
+    - Loader graphics adapted from loaders-modernized (MIT); entity names use ubsa-* prefix to avoid Deadlock / Load-Furn conflicts
+---------------------------------------------------------------------------------------------------

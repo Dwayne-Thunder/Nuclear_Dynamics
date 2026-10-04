@@ -1,0 +1,21 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 04.10.2026
+  Bugfixes:
+    - Fixed technology locale keys: Factorio strips -N on tech names, so use hl-robots / hl-roboports (EN + RU)
+  Balancing:
+    - Robots now use a strict ×4 chain for cargo and speed (1→4→16→64 cargo; speed ×4/×16/×64); batteries scale ×4 to match
+    - Roboport slot capacity remains ×2 per tier
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 04.10.2026
+  Bugfixes:
+    - Fixed load error: robot next_upgrade now shares fast_replaceable_group with vanilla (logistic-robot / construction-robot)
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 04.10.2026
+  Features:
+    - Three roboport tiers above vanilla: ×2 robot/material slots each, ×1.5 logistic & construction radii, more charging pads and power
+    - Three logistic + construction robot tiers: cargo 2/3/4, higher speed and battery
+    - Tinted vanilla graphics; upgrade planner chain; optional Space Age soft-compat (heating / surface conditions)
+---------------------------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+{
+  "name": "Hyper_Logistics",
+  "version": "0.1.2",
+  "title": "Hyper Logistics",
+  "author": "Brian_Thunderstruck",
+  "contact": "https://steamcommunity.com/id/AzuraHimura",
+  "homepage": "",
+  "description": "Three higher roboport tiers (×2 robot capacity each, larger ranges) and three robot tiers with ×4 cargo and speed per tier (4/16/64). Factorio 2.0 / Space Age compatible.",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0",
+    "? space-age"
+  ]
+}

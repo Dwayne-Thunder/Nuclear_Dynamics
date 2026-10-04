@@ -1,0 +1,17 @@
+{
+  "name": "UltimateBelts_Logistics",
+  "version": "0.1.9",
+  "title": "Ultimate Belts Logistics",
+  "author": "Brian_Thunderstruck",
+  "contact": "https://steamcommunity.com/id/AzuraHimura",
+  "homepage": "",
+  "description": "Loaders and high-speed inserters for Ultimate Belts Space Age and/or Double Speed Belts. Speeds adapt to live belt throughput. Loader GUI: split lanes and overfill machines.",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0",
+    "? UltimateBeltsSpaceAge >= 1.3.0",
+    "? DoubleSpeedBelts >= 1.2.0",
+    "? Load-Furn-2-SpaceAgeFix",
+    "? loaders-modernized"
+  ]
+}
